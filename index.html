@@ -14,7 +14,7 @@
     class="bg-gradient-to-br from-gray-100 via-gray-50 to-blue-50 dark:from-gray-900 dark:via-gray-900 dark:to-gray-800 text-gray-800 dark:text-gray-100 transition-colors duration-300 min-h-screen">
 
     <div class="min-h-screen p-4 md:p-6 lg:p-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 h-full">
+        <div class="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-4 h-full">
 
             <header
                 class="lg:col-span-12 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl p-4 px-6 flex justify-between items-center shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50">
@@ -39,9 +39,10 @@
                 </button>
             </header>
 
+            <!-- Left Sidebar: Message + Font Settings -->
             <aside
-                class="lg:col-span-5 xl:col-span-4 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col overflow-hidden">
-                <div class="p-6 flex-1 overflow-y-auto space-y-6">
+                class="lg:col-span-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col overflow-hidden">
+                <div class="p-5 flex-1 overflow-y-auto space-y-5">
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-3">
                         <label for="textInput"
                             class="block text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase">
@@ -58,11 +59,11 @@
                         </h3>
 
                         <div class="space-y-3">
-                            <div class="grid grid-cols-2 gap-3">
+                            <div class="grid grid-cols-2 gap-2">
                                 <div>
                                     <label for="fontSelect" class="text-xs text-gray-400 mb-1 block">Family</label>
                                     <select id="fontSelect"
-                                        class="w-full px-3 py-2.5 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm">
+                                        class="w-full px-2 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-xs">
                                         <option value="hiragino" selected>Hiragino Kaku Gothic</option>
                                         <option value="mplus">M PLUS 1p</option>
                                         <option value="noto">Noto Sans JP</option>
@@ -74,13 +75,13 @@
                                 <div id="weightContainer">
                                     <label for="weightSelect" class="text-xs text-gray-400 mb-1 block">Weight</label>
                                     <select id="weightSelect"
-                                        class="w-full px-3 py-2.5 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm">
+                                        class="w-full px-2 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-xs">
                                     </select>
                                 </div>
                                 <div id="fontInfoContainer" class="hidden">
                                     <label class="text-xs text-gray-400 mb-1 block">Info</label>
                                     <div id="fontInfoDisplay"
-                                        class="w-full px-3 py-2.5 bg-gray-100 dark:bg-gray-700 rounded-xl text-xs text-gray-600 dark:text-gray-300 truncate">
+                                        class="w-full px-2 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl text-xs text-gray-600 dark:text-gray-300 truncate">
                                     </div>
                                 </div>
                             </div>
@@ -90,12 +91,11 @@
 
                             <div>
                                 <label for="fontSize" class="text-xs text-gray-400 mb-1 block">Size</label>
-                                <div
-                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="fontSize" min="12" max="120" value="24"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="fontSizeInput" min="12" max="120" value="24"
-                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
                                     <span class="text-xs text-gray-400 ml-1">px</span>
                                 </div>
                             </div>
@@ -103,36 +103,33 @@
                             <div>
                                 <label for="letterSpacing" class="text-xs text-gray-400 mb-1 block">Letter
                                     Spacing</label>
-                                <div
-                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="letterSpacing" min="-5" max="20" value="0"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="letterSpacingInput" min="-5" max="20" value="0"
-                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
                                     <span class="text-xs text-gray-400 ml-1">px</span>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="lineHeight" class="text-xs text-gray-400 mb-1 block">Line Height</label>
-                                <div
-                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="lineHeight" min="80" max="200" value="120"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="lineHeightInput" min="80" max="200" value="120"
-                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
                                     <span class="text-xs text-gray-400 ml-1">%</span>
                                 </div>
                             </div>
 
                             <div>
                                 <label for="textWidth" class="text-xs text-gray-400 mb-1 block">Text Width</label>
-                                <div
-                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="textWidth" min="10" max="100" value="30"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="textWidthInput" min="10" max="100" value="30"
-                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
                                     <span class="text-xs text-gray-400 ml-1">%</span>
                                 </div>
                             </div>
@@ -140,7 +137,7 @@
                             <div>
                                 <label class="text-xs text-gray-400 mb-1 block">Auto Line Break</label>
                                 <button type="button" id="autoLineBreakToggle"
-                                    class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5 transition-all">
+                                    class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2 transition-all">
                                     <span class="text-xs text-gray-600 dark:text-gray-300">Enabled</span>
                                     <div class="w-10 h-5 bg-primary-500 rounded-full relative transition-colors">
                                         <div
@@ -171,10 +168,58 @@
                                 </span>
                             </label>
                             <input type="text" id="customFontInput" placeholder="e.g. Lobster"
-                                class="w-full px-3 py-2.5 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm">
+                                class="w-full px-3 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm">
                         </div>
                     </div>
+                </div>
+            </aside>
 
+            <!-- Center: Preview -->
+            <section
+                class="lg:col-span-6 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col p-5 relative overflow-hidden">
+
+                <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] pointer-events-none"
+                    style="background-image: radial-gradient(#64748b 1px, transparent 1px); background-size: 20px 20px;">
+                </div>
+
+                <div class="flex-1 flex items-start justify-center relative z-10">
+                    <div id="previewContainer"
+                        class="preview-container relative shadow-2xl rounded-2xl overflow-hidden select-none ring-1 ring-black/5 dark:ring-white/10">
+                        <img id="previewImage" src="assets/image.png" alt="Preview Image"
+                            class="block max-w-full max-h-[70vh] h-auto object-contain bg-white">
+                        <div id="textOverlay" class="overlay-text leading-tight font-sans font-bold text-gray-900"
+                            style="color: black; font-size: 24px;">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-4 flex gap-3 relative z-10">
+                    <label
+                        class="flex-1 py-2.5 px-3 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-2xl shadow-sm transition-all cursor-pointer flex items-center justify-center space-x-2 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                            </path>
+                        </svg>
+                        <span>Custom Image</span>
+                        <input type="file" id="customImageInput" accept="image/*" class="hidden">
+                    </label>
+                    <button type="button" id="downloadBtn"
+                        class="flex-1 py-2.5 px-3 bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/25 transition-all transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center space-x-2 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                        </svg>
+                        <span>Download</span>
+                    </button>
+                </div>
+
+            </section>
+
+            <!-- Right Sidebar: Style + Position -->
+            <aside
+                class="lg:col-span-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col overflow-hidden">
+                <div class="p-5 flex-1 overflow-y-auto space-y-5">
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-4">
                         <h3 class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase">
                             Style
@@ -193,12 +238,11 @@
 
                             <div>
                                 <label for="rotation" class="text-xs text-gray-400 mb-1 block">Rotation</label>
-                                <div
-                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="rotation" min="-180" max="180" value="0"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <span id="rotationDisplay"
-                                        class="ml-3 text-xs font-medium text-primary-600 dark:text-primary-400 min-w-[32px] text-right">0°</span>
+                                        class="ml-2 text-xs font-medium text-primary-600 dark:text-primary-400 min-w-[32px] text-right">0°</span>
                                 </div>
                             </div>
                         </div>
@@ -231,52 +275,8 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
-
             </aside>
-
-            <section
-                class="lg:col-span-7 xl:col-span-8 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col p-6 md:p-8 relative overflow-hidden">
-
-                <div class="absolute inset-0 opacity-[0.03] dark:opacity-[0.02] pointer-events-none"
-                    style="background-image: radial-gradient(#64748b 1px, transparent 1px); background-size: 20px 20px;">
-                </div>
-
-                <div class="flex-1 flex items-start justify-center relative z-10">
-                    <div id="previewContainer"
-                        class="preview-container relative shadow-2xl rounded-2xl overflow-hidden select-none ring-1 ring-black/5 dark:ring-white/10">
-                        <img id="previewImage" src="assets/image.png" alt="Preview Image"
-                            class="block max-w-full max-h-[65vh] h-auto object-contain bg-white">
-                        <div id="textOverlay" class="overlay-text leading-tight font-sans font-bold text-gray-900"
-                            style="color: black; font-size: 24px;">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mt-6 flex gap-3 relative z-10">
-                    <label
-                        class="flex-1 py-3 px-4 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-700 dark:text-gray-200 font-medium rounded-2xl shadow-sm transition-all cursor-pointer flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
-                            </path>
-                        </svg>
-                        <span>Custom Image</span>
-                        <input type="file" id="customImageInput" accept="image/*" class="hidden">
-                    </label>
-                    <button type="button" id="downloadBtn"
-                        class="flex-1 py-3 px-4 bg-gradient-to-r from-primary-500 to-blue-500 hover:from-primary-600 hover:to-blue-600 text-white font-bold rounded-2xl shadow-lg shadow-primary-500/25 transition-all transform hover:scale-[1.02] hover:shadow-xl flex items-center justify-center space-x-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                        </svg>
-                        <span>Download</span>
-                    </button>
-                </div>
-
-            </section>
 
         </div>
     </div>
