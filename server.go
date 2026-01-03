@@ -7,6 +7,9 @@ import (
 
 func main() {
 	mux := http.NewServeMux()
+	mux.HandleFunc("/script.js", func(w http.ResponseWriter, r *http.Request) {
+		http.Redirect(w, r, "/js/script.js", http.StatusMovedPermanently)
+	})
 
 	mux.HandleFunc("/js/", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/javascript; charset=utf-8")
