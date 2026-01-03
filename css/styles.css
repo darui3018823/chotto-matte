@@ -17,12 +17,13 @@ body {
     /* Default to center-ish */
     top: 50%;
     left: 20%;
-    transform: translate(-50%, -50%); /* This will be overridden by JS for rotation */
-    
+    transform: translate(-50%, -50%);
+    /* This will be overridden by JS for rotation */
+
     white-space: pre-wrap;
     line-height: 1.2;
     pointer-events: none;
-    
+
     /* Vertical Writing Default */
     writing-mode: vertical-rl;
     text-orientation: upright;
@@ -32,12 +33,15 @@ body {
 .font-hiragino {
     font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
 }
+
 .font-mplus {
     font-family: 'M PLUS 1p', sans-serif;
 }
+
 .font-noto {
     font-family: 'Noto Sans JP', sans-serif;
 }
+
 .font-system {
     font-family: system-ui, sans-serif;
 }
@@ -47,16 +51,20 @@ body {
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
-    background: transparent; 
+    background: transparent;
 }
+
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1; 
+    background: #cbd5e1;
     border-radius: 4px;
 }
+
 .dark ::-webkit-scrollbar-thumb {
-    background: #475569; 
+    background: #475569;
 }
+
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8; 
+    background: #94a3b8;
 }

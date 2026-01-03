@@ -304,15 +304,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     posYInput.addEventListener('input', (e) => {
-        const val = e.target.value;
+        const val = parseFloat(e.target.value);
         textOverlay.style.top = `${val}%`;
-        posYDisplay.textContent = `${val}%`;
+        posYDisplay.textContent = `${val.toFixed(1)}%`;
     });
 
     posXInput.addEventListener('input', (e) => {
-        const val = e.target.value;
+        const val = parseFloat(e.target.value);
         textOverlay.style.left = `${val}%`;
-        posXDisplay.textContent = `${val}%`;
+        posXDisplay.textContent = `${val.toFixed(1)}%`;
     });
 
     function updateTransform() {
