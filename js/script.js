@@ -30,6 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
 
+    const previewImage = document.getElementById('previewImage');
+    const customImageInput = document.getElementById('customImageInput');
+    const downloadBtn = document.getElementById('downloadBtn');
+
     const DEFAULTS = {
         color: '#28123d',
         font: 'hiragino',
@@ -312,5 +316,22 @@ document.addEventListener('DOMContentLoaded', () => {
     textOverlay.style.color = DEFAULTS.color;
 
     updateFontOptions();
+
+    // Custom Image Upload
+    customImageInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file && file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                previewImage.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Download (placeholder - shows alert for now)
+    downloadBtn.addEventListener('click', () => {
+        alert('Right-click the image and select "Save Image As" to download.\\n\\nFor proper download with text overlay, html2canvas integration is needed.');
+    });
 
 });
