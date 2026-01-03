@@ -444,12 +444,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (settings.r !== undefined) {
                 rotationInput.value = settings.r;
                 rotationDisplay.textContent = `${settings.r}°`;
-                updateTransform();
             }
 
             // Position
             if (settings.x) updatePosX(settings.x);
             if (settings.y) updatePosY(settings.y);
+
+            // Always update transform after position and rotation are set
+            updateTransform();
 
             updateSettingsCodeDisplay();
             return true;
