@@ -36,6 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const customImageInput = document.getElementById('customImageInput');
     const downloadBtn = document.getElementById('downloadBtn');
 
+    // Settings Code elements
+    const settingsCodeDisplay = document.getElementById('settingsCodeDisplay');
+    const copyCodeBtn = document.getElementById('copyCodeBtn');
+    const importCodeInput = document.getElementById('importCodeInput');
+    const applyCodeBtn = document.getElementById('applyCodeBtn');
+    const clearCodeBtn = document.getElementById('clearCodeBtn');
+
     const DEFAULTS = {
         color: '#28123d',
         font: 'hiragino',
@@ -332,7 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateFontOptions();
 
-    // Custom Image Upload
     customImageInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
         if (file && file.type.startsWith('image/')) {
@@ -344,9 +350,142 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Download (placeholder - shows alert for now)
     downloadBtn.addEventListener('click', () => {
         alert('Right-click the image and select "Save Image As" to download.\\n\\nFor proper download with text overlay, html2canvas integration is needed.');
     });
+
+    function generateSettingsCode() {
+        const settings = {
+            m: btoa(unescape(encodeURIComponent(textInput.value))), // Base64 encoded message
+            f: fontSelect.value,
+            w: weightSelect.value || '',
+            cf: customFontInput.value || '',
+            sz: fontSizeSlider.value,
+            ls: letterSpacingSlider.value,
+            lh: lineHeightSlider.value,
+            tw: textWidthSlider.value,
+            lb: autoLineBreakToggle.querySelector('span').textContent === 'Enabled' ? '1' : '0',
+            c: textColorInput.value,
+            r: rotationInput.value,
+            x: posXSlider.value,
+            y: posYSlider.value
+        };
+        return Object.entries(settings).map(([k, v]) => `${k}:${v}`).join('|');
+    }
+
+    function updateSettingsCodeDisplay() {
+        settingsCodeDisplay.textContent = generateSettingsCode();
+    }
+
+    function parseSettingsCode(code) {
+        const settings = {};
+        code.split('|').forEach(part => {
+            const [key, ...valueParts] = part.split(':');
+            settings[key] = valueParts.join(':'); // Handle colons in values
+        });
+        return settings;
+    }
+
+    function applySettings(settings) {
+        try {
+            if (settings.m) {
+                const msg = decodeURIComponent(escape(atob(settings.m)));
+                textInput.value = msg;
+                textOverlay.textContent = msg;
+            }
+
+            if (settings.f) {
+                fontSelect.value = settings.f;
+                updateFontOptions();
+            }
+
+            if (settings.w && weightSelect) {
+                weightSelect.value = settings.w;
+                textOverlay.style.fontWeight = settings.w;
+            }
+
+            if (settings.cf && settings.f === 'custom') {
+                customFontInput.value = settings.cf;
+                applyCustomFont(settings.cf);
+            }
+
+            if (settings.sz) updateFontSize(settings.sz);
+
+            if (settings.ls) updateLetterSpacing(settings.ls);
+
+            if (settings.lh) updateLineHeight(settings.lh);
+
+            if (settings.tw) updateTextWidth(settings.tw);
+
+            if (settings.lb !== undefined) {
+                const shouldEnable = settings.lb === '1';
+                if ((autoLineBreakToggle.querySelector('span').textContent === 'Enabled') !== shouldEnable) {
+                    autoLineBreakToggle.click();
+                }
+            }
+
+            if (settings.c) {
+                textColorInput.value = settings.c;
+                textOverlay.style.color = settings.c;
+                textColorHex.textContent = settings.c;
+            }
+
+            if (settings.r) {
+                rotationInput.value = settings.r;
+                rotationDisplay.textContent = `${settings.r}°`;
+                updateTransform();
+            }
+
+            if (settings.x) updatePosX(settings.x);
+            if (settings.y) updatePosY(settings.y);
+
+            updateSettingsCodeDisplay();
+            return true;
+        } catch (e) {
+            console.error('Failed to apply settings:', e);
+            return false;
+        }
+    }
+
+    copyCodeBtn.addEventListener('click', () => {
+        const code = settingsCodeDisplay.textContent;
+        navigator.clipboard.writeText(code).then(() => {
+            const originalText = copyCodeBtn.innerHTML;
+            copyCodeBtn.innerHTML = '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Copied!';
+            copyCodeBtn.classList.add('text-green-500');
+            setTimeout(() => {
+                copyCodeBtn.innerHTML = originalText;
+                copyCodeBtn.classList.remove('text-green-500');
+            }, 2000);
+        });
+    });
+
+    applyCodeBtn.addEventListener('click', () => {
+        const code = importCodeInput.value.trim();
+        if (!code) return;
+
+        const settings = parseSettingsCode(code);
+        if (applySettings(settings)) {
+            importCodeInput.value = '';
+        } else {
+            alert('Invalid settings code');
+        }
+    });
+
+    clearCodeBtn.addEventListener('click', () => {
+        importCodeInput.value = '';
+    });
+    const allInputs = [textInput, fontSizeSlider, fontSizeInput, letterSpacingSlider, letterSpacingInput,
+        lineHeightSlider, lineHeightInput, textWidthSlider, textWidthInput, textColorInput,
+        rotationInput, posXSlider, posXNumberInput, posYSlider, posYNumberInput];
+    allInputs.forEach(input => {
+        if (input) input.addEventListener('input', updateSettingsCodeDisplay);
+    });
+    fontSelect.addEventListener('change', updateSettingsCodeDisplay);
+    weightSelect.addEventListener('change', updateSettingsCodeDisplay);
+    autoLineBreakToggle.addEventListener('click', () => setTimeout(updateSettingsCodeDisplay, 50));
+    customFontInput.addEventListener('input', debounce(updateSettingsCodeDisplay, 500));
+
+    updateSettingsCodeDisplay();
 
 });
