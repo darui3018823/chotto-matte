@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&family=Noto+Sans+JP:wght@500;600;700;800;900&display=swap');
+
+/* Base Styles */
+body {
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+}
+
+/* Preview Area */
 .preview-container {
     position: relative;
     display: inline-block;
@@ -6,34 +14,49 @@
 
 .overlay-text {
     position: absolute;
+    /* Default to center-ish */
     top: 50%;
     left: 20%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); /* This will be overridden by JS for rotation */
+    
     white-space: pre-wrap;
-    text-align: center;
     line-height: 1.2;
     pointer-events: none;
-    width: 30%;
+    
+    /* Vertical Writing Default */
+    writing-mode: vertical-rl;
+    text-orientation: upright;
 }
 
+/* Font Classes */
+.font-hiragino {
+    font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif;
+}
+.font-mplus {
+    font-family: 'M PLUS 1p', sans-serif;
+}
+.font-noto {
+    font-family: 'Noto Sans JP', sans-serif;
+}
+.font-system {
+    font-family: system-ui, sans-serif;
+}
+
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-    background: transparent;
+    background: transparent; 
 }
-
 ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #cbd5e1; 
     border-radius: 4px;
 }
-
 .dark ::-webkit-scrollbar-thumb {
-    background: #475569;
+    background: #475569; 
 }
-
 ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #94a3b8; 
 }
