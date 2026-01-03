@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- DOM Elements ---
     const textInput = document.getElementById('textInput');
-    const fontSizeInput = document.getElementById('fontSize');
-    const fontSizeDisplay = document.getElementById('fontSizeDisplay');
+    const fontSizeSlider = document.getElementById('fontSize');
+    const fontSizeInput = document.getElementById('fontSizeInput');
     const rotationInput = document.getElementById('rotation');
     const rotationDisplay = document.getElementById('rotationDisplay');
     const textColorInput = document.getElementById('textColor');
@@ -12,7 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const posXInput = document.getElementById('posX');
     const posXDisplay = document.getElementById('posXDisplay');
 
-    // New Font Controls
+    const letterSpacingSlider = document.getElementById('letterSpacing');
+    const letterSpacingInput = document.getElementById('letterSpacingInput');
+    const lineHeightSlider = document.getElementById('lineHeight');
+    const lineHeightInput = document.getElementById('lineHeightInput');
+    const textWidthSlider = document.getElementById('textWidth');
+    const textWidthInput = document.getElementById('textWidthInput');
+    const autoLineBreakToggle = document.getElementById('autoLineBreakToggle');
+
     const fontSelect = document.getElementById('fontSelect');
     const weightContainer = document.getElementById('weightContainer');
     const weightSelect = document.getElementById('weightSelect');
@@ -24,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
 
-    // --- Configuration ---
     const DEFAULTS = {
         color: '#28123d',
         font: 'hiragino',
@@ -65,19 +70,16 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         system: {
             name: 'System Default',
-            weights: [], // Fixed
+            weights: [],
             isFixed: true
         },
         custom: {
             name: 'Google Fonts (Custom)',
-            weights: [], // User defined effectively, but we won't offer a weight select for custom import unless requested.
+            weights: [],
             isCustom: true
         }
     };
 
-    // --- State Management ---
-
-    // Theme
     themeToggle.addEventListener('click', () => {
         if (htmlEl.classList.contains('dark')) {
             htmlEl.classList.remove('dark');
@@ -112,9 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateThemeIcons(false);
     }
 
-    // --- Font Logic ---
-
-    // Simple check for font availability (Canvas strategy)
     function isFontAvailable(fontName) {
         const canvas = document.createElement('canvas');
         const context = canvas.getContext('2d');
@@ -133,19 +132,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedFontKey = fontSelect.value;
         const fontConfig = FONTS[selectedFontKey];
 
-        // Reset UI
         weightContainer.classList.add('hidden');
         customFontContainer.classList.add('hidden');
         fontMessage.classList.add('hidden');
         fontMessage.textContent = '';
-        textOverlay.style.fontFamily = ''; // Clear inline to let classes work, or set specific
+        textOverlay.style.fontFamily = '';
 
-        // Remove old font classes
         textOverlay.classList.remove('font-hiragino', 'font-mplus', 'font-noto', 'font-system');
 
         if (selectedFontKey === 'custom') {
             customFontContainer.classList.remove('hidden');
-            // If custom font is already typed, apply it
             if (customFontInput.value) {
                 applyCustomFont(customFontInput.value);
             }
@@ -153,11 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (fontConfig.checkAvailability) {
-            // Check Hiragino
-            // Note: Canvas check isn't perfect but decent. 
-            // Better to try/apply and maybe warn? 
-            // User requested: "存在しない場合はできないという旨を表示"
-            // We'll check "Hiragino Kaku Gothic ProN" specifically as the base
             const available = isFontAvailable('Hiragino Kaku Gothic ProN') || isFontAvailable('Hiragino Sans');
             if (!available) {
                 fontMessage.textContent = 'Hiragino font not detected on this device. Fallback may occur.';
@@ -167,11 +158,9 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (selectedFontKey === 'system') {
             textOverlay.classList.add('font-system');
         } else {
-            // M Plus or Noto
             textOverlay.classList.add(`font-${selectedFontKey}`);
         }
 
-        // Weights
         if (fontConfig.weights && fontConfig.weights.length > 0) {
             weightContainer.classList.remove('hidden');
             weightSelect.innerHTML = ''; // Clear
@@ -181,13 +170,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 opt.textContent = w.label;
                 weightSelect.appendChild(opt);
             });
-            // Set default
             const defaultW = fontConfig.defaultWeight || (selectedFontKey === 'hiragino' ? '800' : '700');
             weightSelect.value = defaultW;
             textOverlay.style.fontWeight = defaultW;
         } else {
-            // Reset weight for System/Custom if needed, or leave inherited?
-            // User said SysDefault unselectable.
             textOverlay.style.fontWeight = '';
         }
 
@@ -195,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applyCustomFont(fontName) {
         if (!fontName) return;
-        // Inject Google Font
         const linkId = 'custom-google-font';
         let link = document.getElementById(linkId);
         if (!link) {
@@ -204,14 +189,12 @@ document.addEventListener('DOMContentLoaded', () => {
             link.rel = 'stylesheet';
             document.head.appendChild(link);
         }
-        // Basic sanitization
         const safeName = fontName.trim().replace(/ /g, '+');
         link.href = `https://fonts.googleapis.com/css2?family=${safeName}&display=swap`;
 
         textOverlay.style.fontFamily = `"${fontName}", sans-serif`;
     }
 
-    // Debounce function to limit API calls while typing
     function debounce(func, wait) {
         let timeout;
         return function (...args) {
@@ -225,22 +208,74 @@ document.addEventListener('DOMContentLoaded', () => {
         textOverlay.style.fontWeight = e.target.value;
     });
 
-    // Use 'input' with debounce for immediate but safe feedback
     customFontInput.addEventListener('input', debounce((e) => {
         applyCustomFont(e.target.value);
     }, 500));
-
-
-    // --- Other Inputs ---
 
     textInput.addEventListener('input', (e) => {
         textOverlay.textContent = e.target.value;
     });
 
-    fontSizeInput.addEventListener('input', (e) => {
-        const val = e.target.value;
+    function updateFontSize(val) {
         textOverlay.style.fontSize = `${val}px`;
-        fontSizeDisplay.textContent = `${val}px`;
+        fontSizeSlider.value = val;
+        fontSizeInput.value = val;
+    }
+    fontSizeSlider.addEventListener('input', (e) => updateFontSize(e.target.value));
+    fontSizeInput.addEventListener('input', (e) => updateFontSize(e.target.value));
+
+    function updateLetterSpacing(val) {
+        textOverlay.style.letterSpacing = `${val}px`;
+        letterSpacingSlider.value = val;
+        letterSpacingInput.value = val;
+    }
+    letterSpacingSlider.addEventListener('input', (e) => updateLetterSpacing(e.target.value));
+    letterSpacingInput.addEventListener('input', (e) => updateLetterSpacing(e.target.value));
+
+    function updateLineHeight(val) {
+        textOverlay.style.lineHeight = `${val}%`;
+        lineHeightSlider.value = val;
+        lineHeightInput.value = val;
+    }
+    lineHeightSlider.addEventListener('input', (e) => updateLineHeight(e.target.value));
+    lineHeightInput.addEventListener('input', (e) => updateLineHeight(e.target.value));
+
+    function updateTextWidth(val) {
+        textOverlay.style.width = `${val}%`;
+        textWidthSlider.value = val;
+        textWidthInput.value = val;
+    }
+    textWidthSlider.addEventListener('input', (e) => updateTextWidth(e.target.value));
+    textWidthInput.addEventListener('input', (e) => updateTextWidth(e.target.value));
+
+    let autoLineBreakEnabled = true;
+    function updateAutoLineBreak() {
+        const toggleBtn = autoLineBreakToggle;
+        const label = toggleBtn.querySelector('span');
+        const track = toggleBtn.querySelector('div');
+        const thumb = track.querySelector('div');
+
+        if (autoLineBreakEnabled) {
+            textOverlay.style.whiteSpace = 'pre-wrap';
+            textOverlay.style.wordBreak = 'break-word';
+            label.textContent = 'Enabled';
+            track.classList.add('bg-primary-500');
+            track.classList.remove('bg-gray-300', 'dark:bg-gray-600');
+            thumb.classList.add('right-0.5');
+            thumb.classList.remove('left-0.5');
+        } else {
+            textOverlay.style.whiteSpace = 'pre';
+            textOverlay.style.wordBreak = 'normal';
+            label.textContent = 'Disabled';
+            track.classList.remove('bg-primary-500');
+            track.classList.add('bg-gray-300', 'dark:bg-gray-600');
+            thumb.classList.remove('right-0.5');
+            thumb.classList.add('left-0.5');
+        }
+    }
+    autoLineBreakToggle.addEventListener('click', () => {
+        autoLineBreakEnabled = !autoLineBreakEnabled;
+        updateAutoLineBreak();
     });
 
     rotationInput.addEventListener('input', (e) => {
@@ -272,13 +307,10 @@ document.addEventListener('DOMContentLoaded', () => {
         textOverlay.style.transform = `translate(-50%, -50%) rotate(${rot}deg)`;
     }
 
-    // --- Init ---
-    // Set Defaults
     textColorInput.value = DEFAULTS.color;
     textColorHex.textContent = DEFAULTS.color;
     textOverlay.style.color = DEFAULTS.color;
 
-    // Trigger font init
     updateFontOptions();
 
 });
