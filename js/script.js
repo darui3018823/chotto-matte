@@ -161,6 +161,15 @@ document.addEventListener('DOMContentLoaded', () => {
             textOverlay.classList.add('font-hiragino');
         } else if (selectedFontKey === 'system') {
             textOverlay.classList.add('font-system');
+            // Detect and display the actual system font
+            setTimeout(() => {
+                const computedFont = getComputedStyle(textOverlay).fontFamily;
+                const fontName = computedFont.split(',')[0].replace(/['"]/g, '').trim();
+                fontMessage.textContent = `Using: ${fontName}`;
+                fontMessage.classList.remove('hidden');
+                fontMessage.classList.remove('text-amber-500', 'dark:text-amber-400', 'bg-amber-50', 'dark:bg-amber-900/20');
+                fontMessage.classList.add('text-gray-500', 'dark:text-gray-400', 'bg-gray-100', 'dark:bg-gray-800');
+            }, 50);
         } else {
             textOverlay.classList.add(`font-${selectedFontKey}`);
         }
