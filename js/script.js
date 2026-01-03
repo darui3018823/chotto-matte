@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const fontSelect = document.getElementById('fontSelect');
     const weightContainer = document.getElementById('weightContainer');
     const weightSelect = document.getElementById('weightSelect');
+    const fontInfoContainer = document.getElementById('fontInfoContainer');
+    const fontInfoDisplay = document.getElementById('fontInfoDisplay');
     const customFontContainer = document.getElementById('customFontContainer');
     const customFontInput = document.getElementById('customFontInput');
     const fontMessage = document.getElementById('fontMessage');
@@ -137,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const fontConfig = FONTS[selectedFontKey];
 
         weightContainer.classList.add('hidden');
+        fontInfoContainer.classList.add('hidden');
         customFontContainer.classList.add('hidden');
         fontMessage.classList.add('hidden');
         fontMessage.textContent = '';
@@ -161,14 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
             textOverlay.classList.add('font-hiragino');
         } else if (selectedFontKey === 'system') {
             textOverlay.classList.add('font-system');
-            // Detect and display the actual system font
+            fontInfoContainer.classList.remove('hidden');
             setTimeout(() => {
                 const computedFont = getComputedStyle(textOverlay).fontFamily;
                 const fontName = computedFont.split(',')[0].replace(/['"]/g, '').trim();
-                fontMessage.textContent = `Using: ${fontName}`;
-                fontMessage.classList.remove('hidden');
-                fontMessage.classList.remove('text-amber-500', 'dark:text-amber-400', 'bg-amber-50', 'dark:bg-amber-900/20');
-                fontMessage.classList.add('text-gray-500', 'dark:text-gray-400', 'bg-gray-100', 'dark:bg-gray-800');
+                fontInfoDisplay.textContent = fontName;
             }, 50);
         } else {
             textOverlay.classList.add(`font-${selectedFontKey}`);
