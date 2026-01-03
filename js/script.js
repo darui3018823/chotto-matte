@@ -388,54 +388,66 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function applySettings(settings) {
         try {
+            // Message (Base64 decoded)
             if (settings.m) {
                 const msg = decodeURIComponent(escape(atob(settings.m)));
                 textInput.value = msg;
                 textOverlay.textContent = msg;
             }
 
+            // Font and Weight - apply weight AFTER font options are updated
             if (settings.f) {
                 fontSelect.value = settings.f;
                 updateFontOptions();
+
+                // Apply weight after font is set (need slight delay for options to populate)
+                if (settings.w) {
+                    setTimeout(() => {
+                        weightSelect.value = settings.w;
+                        textOverlay.style.fontWeight = settings.w;
+                    }, 100);
+                }
             }
 
-            if (settings.w && weightSelect) {
-                weightSelect.value = settings.w;
-                textOverlay.style.fontWeight = settings.w;
-            }
-
+            // Custom Font
             if (settings.cf && settings.f === 'custom') {
                 customFontInput.value = settings.cf;
                 applyCustomFont(settings.cf);
             }
 
+            // Size
             if (settings.sz) updateFontSize(settings.sz);
 
+            // Letter Spacing
             if (settings.ls) updateLetterSpacing(settings.ls);
 
+            // Line Height
             if (settings.lh) updateLineHeight(settings.lh);
 
+            // Text Width
             if (settings.tw) updateTextWidth(settings.tw);
 
+            // Auto Line Break - update shared state variable and call existing function
             if (settings.lb !== undefined) {
-                const shouldEnable = settings.lb === '1';
-                if ((autoLineBreakToggle.querySelector('span').textContent === 'Enabled') !== shouldEnable) {
-                    autoLineBreakToggle.click();
-                }
+                autoLineBreakEnabled = settings.lb === '1';
+                updateAutoLineBreak();
             }
 
+            // Color
             if (settings.c) {
                 textColorInput.value = settings.c;
                 textOverlay.style.color = settings.c;
                 textColorHex.textContent = settings.c;
             }
 
-            if (settings.r) {
+            // Rotation
+            if (settings.r !== undefined) {
                 rotationInput.value = settings.r;
                 rotationDisplay.textContent = `${settings.r}°`;
                 updateTransform();
             }
 
+            // Position
             if (settings.x) updatePosX(settings.x);
             if (settings.y) updatePosY(settings.y);
 
