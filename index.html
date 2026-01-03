@@ -92,55 +92,54 @@
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label for="letterSpacing" class="text-xs text-gray-400 mb-1 block">Letter
-                                        Spacing</label>
-                                    <div
-                                        class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-2 py-2">
-                                        <input type="range" id="letterSpacing" min="-5" max="20" value="0"
-                                            class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
-                                        <input type="number" id="letterSpacingInput" min="-5" max="20" value="0"
-                                            class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    </div>
-                                </div>
-                                <div>
-                                    <label for="lineHeight" class="text-xs text-gray-400 mb-1 block">Line Height</label>
-                                    <div
-                                        class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-2 py-2">
-                                        <input type="range" id="lineHeight" min="80" max="200" value="120"
-                                            class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
-                                        <input type="number" id="lineHeightInput" min="80" max="200" value="120"
-                                            class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                        <span class="text-xs text-gray-400 ml-0.5">%</span>
-                                    </div>
+                            <div>
+                                <label for="letterSpacing" class="text-xs text-gray-400 mb-1 block">Letter
+                                    Spacing</label>
+                                <div
+                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                    <input type="range" id="letterSpacing" min="-5" max="20" value="0"
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                    <input type="number" id="letterSpacingInput" min="-5" max="20" value="0"
+                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                    <span class="text-xs text-gray-400 ml-1">px</span>
                                 </div>
                             </div>
 
-                            <div class="grid grid-cols-2 gap-3">
-                                <div>
-                                    <label for="textWidth" class="text-xs text-gray-400 mb-1 block">Text Width</label>
-                                    <div
-                                        class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-2 py-2">
-                                        <input type="range" id="textWidth" min="10" max="100" value="30"
-                                            class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
-                                        <input type="number" id="textWidthInput" min="10" max="100" value="30"
-                                            class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                        <span class="text-xs text-gray-400 ml-0.5">%</span>
-                                    </div>
+                            <div>
+                                <label for="lineHeight" class="text-xs text-gray-400 mb-1 block">Line Height</label>
+                                <div
+                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                    <input type="range" id="lineHeight" min="80" max="200" value="120"
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                    <input type="number" id="lineHeightInput" min="80" max="200" value="120"
+                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                    <span class="text-xs text-gray-400 ml-1">%</span>
                                 </div>
-                                <div>
-                                    <label class="text-xs text-gray-400 mb-1 block">Auto Line Break</label>
-                                    <button type="button" id="autoLineBreakToggle"
-                                        class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5 transition-all">
-                                        <span class="text-xs text-gray-600 dark:text-gray-300">Enabled</span>
-                                        <div class="w-10 h-5 bg-primary-500 rounded-full relative transition-colors">
-                                            <div
-                                                class="absolute top-0.5 right-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform">
-                                            </div>
+                            </div>
+
+                            <div>
+                                <label for="textWidth" class="text-xs text-gray-400 mb-1 block">Text Width</label>
+                                <div
+                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
+                                    <input type="range" id="textWidth" min="10" max="100" value="30"
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                    <input type="number" id="textWidthInput" min="10" max="100" value="30"
+                                        class="ml-3 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-2 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                    <span class="text-xs text-gray-400 ml-1">%</span>
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="text-xs text-gray-400 mb-1 block">Auto Line Break</label>
+                                <button type="button" id="autoLineBreakToggle"
+                                    class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5 transition-all">
+                                    <span class="text-xs text-gray-600 dark:text-gray-300">Enabled</span>
+                                    <div class="w-10 h-5 bg-primary-500 rounded-full relative transition-colors">
+                                        <div
+                                            class="absolute top-0.5 right-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform">
                                         </div>
-                                    </button>
-                                </div>
+                                    </div>
+                                </button>
                             </div>
                         </div>
 
