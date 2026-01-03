@@ -260,23 +260,25 @@
 
                         <div class="space-y-3">
                             <div>
-                                <div class="flex justify-between mb-1">
-                                    <label for="posX" class="text-xs text-gray-400">Horizontal</label>
-                                    <span id="posXDisplay"
-                                        class="text-xs font-medium text-primary-600 dark:text-primary-400">20%</span>
+                                <label for="posX" class="text-xs text-gray-400 mb-1 block">Horizontal</label>
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
+                                    <input type="range" id="posX" min="0" max="100" value="20" step="0.1"
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                    <input type="number" id="posXInput" min="0" max="100" value="20" step="0.1"
+                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                    <span class="text-xs text-gray-400 ml-1">%</span>
                                 </div>
-                                <input type="range" id="posX" min="0" max="100" value="20" step="0.1"
-                                    class="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                             </div>
 
                             <div>
-                                <div class="flex justify-between mb-1">
-                                    <label for="posY" class="text-xs text-gray-400">Vertical</label>
-                                    <span id="posYDisplay"
-                                        class="text-xs font-medium text-primary-600 dark:text-primary-400">50%</span>
+                                <label for="posY" class="text-xs text-gray-400 mb-1 block">Vertical</label>
+                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
+                                    <input type="range" id="posY" min="0" max="100" value="50" step="0.1"
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                    <input type="number" id="posYInput" min="0" max="100" value="50" step="0.1"
+                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
+                                    <span class="text-xs text-gray-400 ml-1">%</span>
                                 </div>
-                                <input type="range" id="posY" min="0" max="100" value="50" step="0.1"
-                                    class="w-full h-1.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                             </div>
                         </div>
                     </div>

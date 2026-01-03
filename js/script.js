@@ -6,10 +6,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const rotationDisplay = document.getElementById('rotationDisplay');
     const textColorInput = document.getElementById('textColor');
     const textColorHex = document.getElementById('textColorHex');
-    const posYInput = document.getElementById('posY');
-    const posYDisplay = document.getElementById('posYDisplay');
-    const posXInput = document.getElementById('posX');
-    const posXDisplay = document.getElementById('posXDisplay');
+    const posYSlider = document.getElementById('posY');
+    const posYNumberInput = document.getElementById('posYInput');
+    const posXSlider = document.getElementById('posX');
+    const posXNumberInput = document.getElementById('posXInput');
 
     const letterSpacingSlider = document.getElementById('letterSpacing');
     const letterSpacingInput = document.getElementById('letterSpacingInput');
@@ -303,17 +303,23 @@ document.addEventListener('DOMContentLoaded', () => {
         textColorHex.textContent = val;
     });
 
-    posYInput.addEventListener('input', (e) => {
-        const val = parseFloat(e.target.value);
+    // Position Y (slider + number input sync)
+    function updatePosY(val) {
         textOverlay.style.top = `${val}%`;
-        posYDisplay.textContent = `${val.toFixed(1)}%`;
-    });
+        posYSlider.value = val;
+        posYNumberInput.value = val;
+    }
+    posYSlider.addEventListener('input', (e) => updatePosY(e.target.value));
+    posYNumberInput.addEventListener('input', (e) => updatePosY(e.target.value));
 
-    posXInput.addEventListener('input', (e) => {
-        const val = parseFloat(e.target.value);
+    // Position X (slider + number input sync)
+    function updatePosX(val) {
         textOverlay.style.left = `${val}%`;
-        posXDisplay.textContent = `${val.toFixed(1)}%`;
-    });
+        posXSlider.value = val;
+        posXNumberInput.value = val;
+    }
+    posXSlider.addEventListener('input', (e) => updatePosX(e.target.value));
+    posXNumberInput.addEventListener('input', (e) => updatePosX(e.target.value));
 
     function updateTransform() {
         const rot = rotationInput.value;
