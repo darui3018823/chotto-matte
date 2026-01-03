@@ -116,11 +116,11 @@
                             Style
                         </h3>
 
-                        <div class="grid grid-cols-2 gap-3">
+                        <div class="space-y-3">
                             <div>
                                 <label for="textColor" class="text-xs text-gray-400 mb-1 block">Color</label>
                                 <div
-                                    class="flex items-center space-x-2 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-2">
+                                    class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-2.5">
                                     <input type="color" id="textColor" value="#000000"
                                         class="w-8 h-8 rounded-lg cursor-pointer border-0 shadow-inner">
                                     <span id="textColorHex" class="text-xs font-mono text-gray-500">#000000</span>
@@ -129,11 +129,12 @@
 
                             <div>
                                 <label for="rotation" class="text-xs text-gray-400 mb-1 block">Rotation</label>
-                                <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
+                                <div
+                                    class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2.5">
                                     <input type="range" id="rotation" min="-180" max="180" value="0"
-                                        class="flex-1 h-1.5 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
+                                        class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <span id="rotationDisplay"
-                                        class="ml-2 text-xs font-medium text-primary-600 dark:text-primary-400 w-8 text-right">0°</span>
+                                        class="ml-3 text-xs font-medium text-primary-600 dark:text-primary-400 min-w-[32px] text-right">0°</span>
                                 </div>
                             </div>
                         </div>
