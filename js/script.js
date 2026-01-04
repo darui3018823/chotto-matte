@@ -505,6 +505,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Font License Modal
     const fontInfoBtn = document.getElementById('fontInfoBtn');
     const fontLicenseModal = document.getElementById('fontLicenseModal');
+    const fontLicenseBackdrop = document.getElementById('fontLicenseBackdrop');
+    const fontLicensePanel = document.getElementById('fontLicensePanel');
     const closeFontModal = document.getElementById('closeFontModal');
     const tabLineSeed = document.getElementById('tabLineSeed');
     const tabGoogleFonts = document.getElementById('tabGoogleFonts');
@@ -512,8 +514,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const contentGoogleFonts = document.getElementById('contentGoogleFonts');
     let lineSeedLicenseLoaded = false;
 
-    fontInfoBtn.addEventListener('click', () => {
-        fontLicenseModal.classList.remove('hidden');
+    function openFontPanel() {
+        fontLicenseModal.classList.remove('pointer-events-none');
+        fontLicenseBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+        fontLicenseBackdrop.classList.add('opacity-100', 'pointer-events-auto');
+        fontLicensePanel.classList.remove('translate-x-full');
+        fontLicensePanel.classList.add('translate-x-0');
 
         // Load LINE Seed license from file if not already loaded
         if (!lineSeedLicenseLoaded) {
@@ -528,26 +534,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     console.error('Failed to load OFL.txt:', err);
                 });
         }
-    });
+    }
 
-    closeFontModal.addEventListener('click', () => {
-        fontLicenseModal.classList.add('hidden');
-    });
+    function closeFontPanel() {
+        fontLicenseBackdrop.classList.remove('opacity-100', 'pointer-events-auto');
+        fontLicenseBackdrop.classList.add('opacity-0', 'pointer-events-none');
+        fontLicensePanel.classList.remove('translate-x-0');
+        fontLicensePanel.classList.add('translate-x-full');
+        // Re-add pointer-events-none to modal after animation
+        setTimeout(() => {
+            fontLicenseModal.classList.add('pointer-events-none');
+        }, 300);
+    }
 
-    fontLicenseModal.addEventListener('click', (e) => {
-        if (e.target === fontLicenseModal) {
-            fontLicenseModal.classList.add('hidden');
-        }
-    });
+    fontInfoBtn.addEventListener('click', openFontPanel);
+
+    closeFontModal.addEventListener('click', closeFontPanel);
+
+    fontLicenseBackdrop.addEventListener('click', closeFontPanel);
 
     // Tab switching
+    const tabContentWrapper = document.getElementById('tabContentWrapper');
+
     tabLineSeed.addEventListener('click', () => {
         tabLineSeed.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
         tabLineSeed.classList.remove('text-gray-500');
         tabGoogleFonts.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
         tabGoogleFonts.classList.add('text-gray-500');
-        contentLineSeed.classList.remove('hidden');
-        contentGoogleFonts.classList.add('hidden');
+        tabContentWrapper.style.transform = 'translateX(0)';
     });
 
     tabGoogleFonts.addEventListener('click', () => {
@@ -555,8 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
         tabGoogleFonts.classList.remove('text-gray-500');
         tabLineSeed.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
         tabLineSeed.classList.add('text-gray-500');
-        contentGoogleFonts.classList.remove('hidden');
-        contentLineSeed.classList.add('hidden');
+        tabContentWrapper.style.transform = 'translateX(-50%)';
     });
 
 });
