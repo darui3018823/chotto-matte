@@ -27,6 +27,11 @@ body {
     /* Vertical Writing Default */
     writing-mode: vertical-rl;
     text-orientation: upright;
+
+    /* Center vertical text within the text box width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Font Classes */
