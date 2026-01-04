@@ -12,10 +12,10 @@ A single-page tool for placing vertical Japanese text on top of an image. The ap
 - Font license viewer for LINE Seed JP and Google Fonts families
 
 ## Tech Stack
-- HTML + Tailwind CDN with a small theme extension in [js/twcss_conf.js](../js/twcss_conf.js)
-- Vanilla JavaScript UI logic in [js/script.js](../js/script.js)
-- Styling helpers and font faces in [css/styles.css](../css/styles.css)
-- Static Go server in [server.go](../server.go) to serve HTML, JS, CSS, assets, and fonts
+- HTML + Tailwind CDN with a small theme extension in [js/twcss_conf.js](./js/twcss_conf.js)
+- Vanilla JavaScript UI logic in [js/script.js](./js/script.js)
+- Styling helpers and font faces in [css/styles.css](./css/styles.css)
+- Static Go server in [server.go](./server.go) to serve HTML, JS, CSS, assets, and fonts
 
 ## Getting Started
 1) Install Go (1.21+ recommended).
@@ -58,6 +58,6 @@ y: vertical position (%)
 - LINE Seed JP is bundled locally; other families load from Google Fonts CDN when chosen.
 
 ## Fonts and Licenses
-- LINE Seed JP files live in [fonts](../fonts) with the license text ([fonts/OFL.txt](../fonts/OFL.txt)).
-- Google Fonts families (M PLUS 1p, Noto Sans JP, Nunito Sans, Poppins, Red Hat Display) are fetched from the CDN and are licensed under the SIL Open Font License 1.1 (see [fonts/ofl_license.txt](../fonts/ofl_license.txt)).
+- LINE Seed JP files live in [fonts](./fonts) with the license text ([fonts/OFL.txt](./fonts/OFL.txt)).
+- Google Fonts families (M PLUS 1p, Noto Sans JP, Nunito Sans, Poppins, Red Hat Display) are fetched from the CDN and are licensed under the SIL Open Font License 1.1 (see [fonts/ofl_license.txt](./fonts/ofl_license.txt)).
 - Additional license references are shown inside the UI via the Font Licenses panel.
