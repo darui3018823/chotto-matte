@@ -572,4 +572,23 @@ document.addEventListener('DOMContentLoaded', () => {
         tabContentWrapper.style.transform = 'translateX(-50%)';
     });
 
+    // OFL License loading
+    const oflLicenseDetails = document.getElementById('oflLicenseDetails');
+    const oflLicenseContent = document.getElementById('oflLicenseContent');
+    let oflLicenseLoaded = false;
+
+    oflLicenseDetails.addEventListener('toggle', () => {
+        if (oflLicenseDetails.open && !oflLicenseLoaded) {
+            fetch('/fonts/ofl_license.txt')
+                .then(response => response.text())
+                .then(text => {
+                    oflLicenseContent.textContent = text;
+                    oflLicenseLoaded = true;
+                })
+                .catch(err => {
+                    oflLicenseContent.textContent = 'Failed to load license file.';
+                    console.error('Failed to load ofl_license.txt:', err);
+                });
+        }
+    });
 });
