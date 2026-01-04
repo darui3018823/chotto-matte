@@ -502,4 +502,61 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateSettingsCodeDisplay();
 
+    // Font License Modal
+    const fontInfoBtn = document.getElementById('fontInfoBtn');
+    const fontLicenseModal = document.getElementById('fontLicenseModal');
+    const closeFontModal = document.getElementById('closeFontModal');
+    const tabLineSeed = document.getElementById('tabLineSeed');
+    const tabGoogleFonts = document.getElementById('tabGoogleFonts');
+    const contentLineSeed = document.getElementById('contentLineSeed');
+    const contentGoogleFonts = document.getElementById('contentGoogleFonts');
+    let lineSeedLicenseLoaded = false;
+
+    fontInfoBtn.addEventListener('click', () => {
+        fontLicenseModal.classList.remove('hidden');
+
+        // Load LINE Seed license from file if not already loaded
+        if (!lineSeedLicenseLoaded) {
+            fetch('/fonts/OFL.txt')
+                .then(response => response.text())
+                .then(text => {
+                    contentLineSeed.textContent = text;
+                    lineSeedLicenseLoaded = true;
+                })
+                .catch(err => {
+                    contentLineSeed.textContent = 'Failed to load license file.';
+                    console.error('Failed to load OFL.txt:', err);
+                });
+        }
+    });
+
+    closeFontModal.addEventListener('click', () => {
+        fontLicenseModal.classList.add('hidden');
+    });
+
+    fontLicenseModal.addEventListener('click', (e) => {
+        if (e.target === fontLicenseModal) {
+            fontLicenseModal.classList.add('hidden');
+        }
+    });
+
+    // Tab switching
+    tabLineSeed.addEventListener('click', () => {
+        tabLineSeed.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
+        tabLineSeed.classList.remove('text-gray-500');
+        tabGoogleFonts.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
+        tabGoogleFonts.classList.add('text-gray-500');
+        contentLineSeed.classList.remove('hidden');
+        contentGoogleFonts.classList.add('hidden');
+    });
+
+    tabGoogleFonts.addEventListener('click', () => {
+        tabGoogleFonts.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
+        tabGoogleFonts.classList.remove('text-gray-500');
+        tabLineSeed.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
+        tabLineSeed.classList.add('text-gray-500');
+        contentGoogleFonts.classList.remove('hidden');
+        contentLineSeed.classList.add('hidden');
+    });
+
 });

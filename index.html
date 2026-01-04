@@ -339,8 +339,55 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Credits -->
+                <div class="p-3 text-right text-[10px] text-gray-400 dark:text-gray-500 leading-relaxed font-nunito">
+                    <div>Font: LINE Seed JP © LY Corporation <button id="fontInfoBtn"
+                            class="text-primary-500 hover:underline">More Info</button></div>
+                    <div>Image: © [Creator Name]</div>
+                    <div>Generator Created by <a href="https://daruks.com/" target="_blank">darui3018823</a>.</div>
+                </div>
             </aside>
 
+        </div>
+    </div>
+
+    <!-- Font License Side Panel -->
+    <div id="fontLicenseModal" class="fixed inset-0 bg-black/30 backdrop-blur-sm z-50 hidden">
+        <div
+            class="absolute right-0 top-0 h-full w-full max-w-xl bg-white dark:bg-gray-800 shadow-2xl flex flex-col transform transition-transform">
+            <!-- Header -->
+            <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white font-lineseed">Font Licenses</h3>
+                <button id="closeFontModal"
+                    class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+                    <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="flex border-b border-gray-200 dark:border-gray-700">
+                <button id="tabLineSeed"
+                    class="flex-1 py-3 text-sm font-medium text-primary-600 border-b-2 border-primary-500 font-poppins">LINE
+                    Seed JP</button>
+                <button id="tabGoogleFonts"
+                    class="flex-1 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-poppins">Google
+                    Fonts</button>
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <div id="contentLineSeed"
+                    class="text-xs text-gray-600 dark:text-gray-300 font-mono whitespace-pre-wrap leading-relaxed">
+                    Loading...</div>
+
+                <div id="contentGoogleFonts" class="hidden text-sm text-gray-600 dark:text-gray-300 font-nunito">
+                    <p class="text-gray-500 dark:text-gray-400">Google Fonts license information will be added here.</p>
+                </div>
+            </div>
         </div>
     </div>
 
