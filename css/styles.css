@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&family=Noto+Sans+JP:wght@500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@500;700;800;900&family=Noto+Sans+JP:wght@500;600;700;800;900&family=Nunito+Sans:wght@400&family=Poppins:wght@400&family=Red+Hat+Display:ital,wght@1,700&display=swap');
 
 /* LINE Seed JP Font */
 @font-face {
@@ -11,6 +11,14 @@
 
 .font-lineseed {
     font-family: 'LINE Seed JP', sans-serif;
+}
+
+.font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+.font-nunito {
+    font-family: 'Nunito Sans', sans-serif;
 }
 
 /* Base Styles */

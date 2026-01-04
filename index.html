@@ -23,8 +23,8 @@
                 <div class="flex items-center gap-2">
                     <img src="/assets/cherry_blossom_3d.png" alt="" class="w-7 h-7">
                     <img src="/assets/raised_back_of_hand_3d_default.png" alt="" class="w-7 h-7">
-                    <h1
-                        class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-blue-600">
+                    <h1 class="text-2xl font-bold italic bg-clip-text text-transparent bg-gradient-to-r from-primary-400 to-blue-600"
+                        style="font-family: 'Red Hat Display', sans-serif;">
                         Chotto Matte! Generator
                     </h1>
                 </div>
@@ -51,7 +51,7 @@
                 <div class="p-5 flex-1 overflow-y-auto space-y-5">
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-3">
                         <label for="textInput"
-                            class="block text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase font-lineseed">
+                            class="block text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 font-lineseed">
                             Message
                         </label>
                         <textarea id="textInput" rows="4"
@@ -60,15 +60,15 @@
                     </div>
 
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-4">
-                        <h3
-                            class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase font-lineseed">
+                        <h3 class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 font-lineseed">
                             Font Settings
                         </h3>
 
                         <div class="space-y-3">
                             <div class="grid grid-cols-2 gap-2">
                                 <div>
-                                    <label for="fontSelect" class="text-xs text-gray-400 mb-1 block">Family</label>
+                                    <label for="fontSelect"
+                                        class="text-xs text-gray-400 font-poppins mb-1 block">Family</label>
                                     <select id="fontSelect"
                                         class="w-full px-2 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-xs">
                                         <option value="hiragino" selected>Hiragino Kaku Gothic</option>
@@ -80,13 +80,14 @@
                                 </div>
 
                                 <div id="weightContainer">
-                                    <label for="weightSelect" class="text-xs text-gray-400 mb-1 block">Weight</label>
+                                    <label for="weightSelect"
+                                        class="text-xs text-gray-400 font-poppins mb-1 block">Weight</label>
                                     <select id="weightSelect"
                                         class="w-full px-2 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-xs">
                                     </select>
                                 </div>
                                 <div id="fontInfoContainer" class="hidden">
-                                    <label class="text-xs text-gray-400 mb-1 block">Info</label>
+                                    <label class="text-xs text-gray-400 font-poppins mb-1 block">Info</label>
                                     <div id="fontInfoDisplay"
                                         class="w-full px-2 py-2 bg-gray-100 dark:bg-gray-700 rounded-xl text-xs text-gray-600 dark:text-gray-300 truncate">
                                     </div>
@@ -97,55 +98,57 @@
                             </p>
 
                             <div>
-                                <label for="fontSize" class="text-xs text-gray-400 mb-1 block">Size</label>
+                                <label for="fontSize" class="text-xs text-gray-400 font-poppins mb-1 block">Size</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="fontSize" min="12" max="120" value="24"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="fontSizeInput" min="12" max="120" value="24"
-                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">px</span>
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">px</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label for="letterSpacing" class="text-xs text-gray-400 mb-1 block">Letter
+                                <label for="letterSpacing" class="text-xs text-gray-400 font-poppins mb-1 block">Letter
                                     Spacing</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="letterSpacing" min="-5" max="20" value="0"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="letterSpacingInput" min="-5" max="20" value="0"
-                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">px</span>
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">px</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label for="lineHeight" class="text-xs text-gray-400 mb-1 block">Line Height</label>
+                                <label for="lineHeight" class="text-xs text-gray-400 font-poppins mb-1 block">Line
+                                    Height</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="lineHeight" min="80" max="200" value="120"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="lineHeightInput" min="80" max="200" value="120"
-                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">%</span>
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">%</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label for="textWidth" class="text-xs text-gray-400 mb-1 block">Text Width</label>
+                                <label for="textWidth" class="text-xs text-gray-400 font-poppins mb-1 block">Text
+                                    Width</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="textWidth" min="10" max="100" value="30"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="textWidthInput" min="10" max="100" value="30"
-                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">%</span>
+                                        class="ml-2 w-12 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">%</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label class="text-xs text-gray-400 mb-1 block">Auto Line Break</label>
+                                <label class="text-xs text-gray-400 font-poppins mb-1 block">Auto Line Break</label>
                                 <button type="button" id="autoLineBreakToggle"
                                     class="w-full flex items-center justify-between bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2 transition-all">
-                                    <span class="text-xs text-gray-600 dark:text-gray-300">Enabled</span>
+                                    <span class="text-xs text-gray-600 dark:text-gray-300 font-nunito">Enabled</span>
                                     <div class="w-10 h-5 bg-primary-500 rounded-full relative transition-colors">
                                         <div
                                             class="absolute top-0.5 right-0.5 w-4 h-4 bg-white rounded-full shadow transition-transform">
@@ -156,7 +159,8 @@
                         </div>
 
                         <div id="customFontContainer" class="hidden">
-                            <label for="customFontInput" class="text-xs text-gray-400 mb-1 flex items-center gap-1">
+                            <label for="customFontInput"
+                                class="text-xs text-gray-400 font-poppins mb-1 flex items-center gap-1">
                                 Google Font Name
                                 <span class="relative group">
                                     <svg class="w-3.5 h-3.5 text-gray-400 cursor-help" fill="none" stroke="currentColor"
@@ -175,7 +179,7 @@
                                 </span>
                             </label>
                             <input type="text" id="customFontInput" placeholder="e.g. Lobster"
-                                class="w-full px-3 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm">
+                                class="w-full px-3 py-2 bg-white dark:bg-gray-800 border-0 rounded-xl focus:ring-2 focus:ring-primary-300 focus:outline-none dark:text-white transition-all shadow-sm text-sm font-nunito">
                         </div>
                     </div>
                 </div>
@@ -203,7 +207,7 @@
                 <div class="mt-3 bg-gray-100/50 dark:bg-gray-900/30 rounded-2xl p-3 relative z-10">
                     <div class="flex items-center justify-between mb-2">
                         <h4
-                            class="text-[10px] font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase font-lineseed">
+                            class="text-[10px] font-semibold tracking-wider text-gray-400 dark:text-gray-500 font-lineseed">
                             Settings Code
                         </h4>
                         <button id="copyCodeBtn" type="button"
@@ -249,14 +253,14 @@
                 class="lg:col-span-3 bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl rounded-3xl shadow-lg shadow-gray-200/50 dark:shadow-black/20 ring-1 ring-gray-200/50 dark:ring-gray-700/50 flex flex-col overflow-hidden">
                 <div class="p-5 flex-1 overflow-y-auto space-y-5">
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-4">
-                        <h3
-                            class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase font-lineseed">
+                        <h3 class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 font-lineseed">
                             Style
                         </h3>
 
                         <div class="space-y-3">
                             <div>
-                                <label for="textColor" class="text-xs text-gray-400 mb-1 block">Color</label>
+                                <label for="textColor"
+                                    class="text-xs text-gray-400 font-poppins mb-1 block">Color</label>
                                 <div
                                     class="flex items-center space-x-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-2.5">
                                     <input type="color" id="textColor" value="#000000"
@@ -266,7 +270,8 @@
                             </div>
 
                             <div>
-                                <label for="rotation" class="text-xs text-gray-400 mb-1 block">Rotation</label>
+                                <label for="rotation"
+                                    class="text-xs text-gray-400 font-poppins mb-1 block">Rotation</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="rotation" min="-180" max="180" value="0"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
@@ -278,39 +283,38 @@
                     </div>
 
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-4">
-                        <h3
-                            class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase font-lineseed">
+                        <h3 class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 font-lineseed">
                             Position
                         </h3>
 
                         <div class="space-y-3">
                             <div>
-                                <label for="posX" class="text-xs text-gray-400 mb-1 block">Horizontal</label>
+                                <label for="posX"
+                                    class="text-xs text-gray-400 font-poppins mb-1 block">Horizontal</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="posX" min="0" max="100" value="20" step="0.1"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="posXInput" min="0" max="100" value="20" step="0.1"
-                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">%</span>
+                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">%</span>
                                 </div>
                             </div>
 
                             <div>
-                                <label for="posY" class="text-xs text-gray-400 mb-1 block">Vertical</label>
+                                <label for="posY" class="text-xs text-gray-400 font-poppins mb-1 block">Vertical</label>
                                 <div class="flex items-center bg-white dark:bg-gray-800 rounded-xl shadow-sm px-3 py-2">
                                     <input type="range" id="posY" min="0" max="100" value="50" step="0.1"
                                         class="flex-1 h-2 bg-gray-200 dark:bg-gray-700 rounded-lg appearance-none cursor-pointer accent-primary-500">
                                     <input type="number" id="posYInput" min="0" max="100" value="50" step="0.1"
-                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none">
-                                    <span class="text-xs text-gray-400 ml-1">%</span>
+                                        class="ml-2 w-14 text-xs font-medium text-primary-600 dark:text-primary-400 bg-transparent border border-gray-200 dark:border-gray-600 rounded-lg px-1 py-1 text-center focus:ring-2 focus:ring-primary-300 focus:outline-none font-nunito">
+                                    <span class="text-xs text-gray-400 font-poppins ml-1">%</span>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="bg-gray-50/50 dark:bg-gray-900/30 rounded-2xl p-4 space-y-3">
-                        <h3
-                            class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 uppercase font-lineseed">
+                        <h3 class="text-xs font-semibold tracking-wider text-gray-500 dark:text-gray-400 font-lineseed">
                             Import Settings
                         </h3>
                         <input type="text" id="importCodeInput" placeholder="Paste settings code here..."
