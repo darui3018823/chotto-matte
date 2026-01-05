@@ -60,3 +60,8 @@ y: 垂直位置(%)
 - LINE Seed JP は [fonts](./fonts) 配下（ライセンスは [fonts/OFL.txt](./fonts/OFL.txt)）。
 - M PLUS 1p / Noto Sans JP / Nunito Sans / Poppins / Red Hat Display は Google Fonts 由来で、SIL Open Font License 1.1 です（[fonts/ofl_license.txt](./fonts/ofl_license.txt) を参照）。
 - 追加のクレジットや全文はアプリ内の Font Licenses パネルに表示されます。
+
+## ライセンスについて
+- 「私が作成した」と明記しているソースコードは BSD-2-Clause（配布物同梱の [./License](./License) を参照）で提供します。
+- フォント・画像など、個別ライセンスが必要な要素は [./License.md](./License.md) にまとめています。
+- 画像は本人の許可を得て使用しており、再頒布を固く禁じます。

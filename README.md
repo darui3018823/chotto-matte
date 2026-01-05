@@ -61,3 +61,8 @@ y: vertical position (%)
 - LINE Seed JP files live in [fonts](./fonts) with the license text ([fonts/OFL.txt](./fonts/OFL.txt)).
 - Google Fonts families (M PLUS 1p, Noto Sans JP, Nunito Sans, Poppins, Red Hat Display) are fetched from the CDN and are licensed under the SIL Open Font License 1.1 (see [fonts/ofl_license.txt](./fonts/ofl_license.txt)).
 - Additional license references are shown inside the UI via the Font Licenses panel.
+
+## Project Licensing
+- Source code explicitly authored by me is licensed under BSD-2-Clause (see [./License](./License)).
+- Fonts, images, and other third-party assets that require separate terms are listed in [./License.md](./License.md).
+- Bundled images are used with explicit permission; redistribution of those images is prohibited.
