@@ -1,0 +1,18 @@
+{
+  "name": "chotto-matte!",
+  "version": "1.0.0",
+  "description": "<table>\r <tr>\r <td width=\"50%\">",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.18"
+  }
+}
