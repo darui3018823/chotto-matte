@@ -346,10 +346,16 @@
 
                 <!-- Credits -->
                 <div class="p-3 text-right text-[10px] text-gray-400 dark:text-gray-500 leading-relaxed font-nunito">
-                    <div>Image: © 煌星るな (Kiraboshi Runa)</div>
-                    <div>Generator Created by <a href="https://daruks.com/" target="_blank">darui3018823</a>.</div>
-                    <div>LINE Seed JP © LY Corporation, <button id="fontInfoBtn"
-                            class="text-primary-500 hover:underline">More Info</button></div>
+                    <div>Image: © <a href="https://x.com/Runa7733" target="_blank" class="hover:text-primary-500">煌星るな
+                            (Kiraboshi Runa)</a></div>
+                    <div>Generator Created by <a href="https://daruks.com/" target="_blank"
+                            class="hover:text-primary-500">darui3018823</a>.</div>
+                    <div class="mt-1"><button id="fontInfoBtn"
+                            class="text-primary-500 hover:underline inline-flex items-center gap-1"><svg class="w-3 h-3"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>Licenses & Credits</button></div>
                 </div>
             </aside>
 
@@ -364,7 +370,7 @@
         <div id="fontLicensePanel"
             class="absolute right-0 top-0 h-full w-full max-w-xl bg-white/90 dark:bg-gray-800/90 backdrop-blur-xl shadow-2xl flex flex-col transform translate-x-full transition-transform duration-300 ease-out ring-1 ring-gray-200/50 dark:ring-gray-700/50 pointer-events-auto">
             <div class="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
-                <h3 class="text-lg font-semibold text-gray-800 dark:text-white font-lineseed">Font Licenses</h3>
+                <h3 class="text-lg font-semibold text-gray-800 dark:text-white font-lineseed">Licenses & Credits</h3>
                 <button id="closeFontModal"
                     class="p-1.5 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
                     <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -382,17 +388,20 @@
                 <button id="tabGoogleFonts"
                     class="flex-1 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-poppins">Google
                     Fonts</button>
+                <button id="tabImageCredit"
+                    class="flex-1 py-3 text-sm font-medium text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 font-poppins">Image
+                    Credit</button>
             </div>
 
             <!-- Content -->
             <div class="flex-1 overflow-hidden relative">
                 <div id="tabContentWrapper" class="flex transition-transform duration-300 ease-out h-full"
-                    style="width: 200%;">
+                    style="width: 300%;">
                     <div id="contentLineSeed"
-                        class="w-1/2 h-full overflow-y-auto p-4 text-xs text-gray-600 dark:text-gray-300 font-mono whitespace-pre-wrap leading-relaxed">
+                        class="w-1/3 h-full overflow-y-auto p-4 text-xs text-gray-600 dark:text-gray-300 font-mono whitespace-pre-wrap leading-relaxed">
                         Loading...</div>
                     <div id="contentGoogleFonts"
-                        class="w-1/2 h-full overflow-y-auto p-4 text-sm text-gray-600 dark:text-gray-300 font-nunito space-y-4">
+                        class="w-1/3 h-full overflow-y-auto p-4 text-sm text-gray-600 dark:text-gray-300 font-nunito space-y-4">
                         <h2 class="text-base font-bold text-gray-800 dark:text-white">Copyright Notices</h2>
 
                         <div class="space-y-3 text-xs">
@@ -508,6 +517,43 @@
                                 class="mt-3 text-[10px] font-mono text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-900/50 rounded-lg p-3 whitespace-pre-wrap leading-relaxed">
                                 Loading...</div>
                         </details>
+                    </div>
+                    <div id="contentImageCredit"
+                        class="w-1/3 h-full overflow-y-auto p-4 text-sm text-gray-600 dark:text-gray-300 font-nunito space-y-4">
+                        <h2 class="text-base font-bold text-gray-800 dark:text-white">Image Credit</h2>
+
+                        <div class="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 space-y-3">
+                            <div>
+                                <h3 class="font-semibold text-gray-700 dark:text-gray-200">煌星るな</h3>
+                                <p class="text-xs text-gray-500 dark:text-gray-400">Kiraboshi Runa</p>
+                            </div>
+                            <p class="text-xs text-gray-500 dark:text-gray-400 leading-relaxed">
+                                このジェネレーターで使用している画像は、煌星るな様が作成されたものです。
+                                非営利目的での使用許可をいただいております。
+                            </p>
+                            <p class="text-xs text-primary-500 dark:text-primary-400 font-medium">
+                                素敵な画像の使用をご許可いただき、心より感謝申し上げます。
+                            </p>
+                            <div class="pt-2 border-t border-gray-200 dark:border-gray-600">
+                                <a href="https://x.com/Runa7733/status/1980922235029442737" target="_blank"
+                                    class="inline-flex items-center gap-2 text-xs text-primary-500 hover:text-primary-600 transition-colors">
+                                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                                        <path
+                                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                    </svg>
+                                    元ツイートを見る
+                                </a>
+                            </div>
+                        </div>
+
+                        <div
+                            class="text-xs text-gray-400 dark:text-gray-500 bg-gray-100 dark:bg-gray-800/50 rounded-lg p-3">
+                            <p class="font-medium mb-1">使用条件</p>
+                            <ul class="list-disc list-inside space-y-1 text-gray-500 dark:text-gray-400">
+                                <li>非営利目的での使用に限ります</li>
+                                <li>画像の著作権は煌星るな様に帰属します</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

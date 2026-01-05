@@ -514,6 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeFontModal = document.getElementById('closeFontModal');
     const tabLineSeed = document.getElementById('tabLineSeed');
     const tabGoogleFonts = document.getElementById('tabGoogleFonts');
+    const tabImageCredit = document.getElementById('tabImageCredit');
     const contentLineSeed = document.getElementById('contentLineSeed');
     const contentGoogleFonts = document.getElementById('contentGoogleFonts');
     let lineSeedLicenseLoaded = false;
@@ -557,24 +558,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
     fontLicenseBackdrop.addEventListener('click', closeFontPanel);
 
-    // Tab switching
+    // Tab switching (3 tabs)
     const tabContentWrapper = document.getElementById('tabContentWrapper');
+    const allTabs = [tabLineSeed, tabGoogleFonts, tabImageCredit];
 
-    tabLineSeed.addEventListener('click', () => {
-        tabLineSeed.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
-        tabLineSeed.classList.remove('text-gray-500');
-        tabGoogleFonts.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
-        tabGoogleFonts.classList.add('text-gray-500');
-        tabContentWrapper.style.transform = 'translateX(0)';
-    });
+    function setActiveTab(activeTab, translateX) {
+        allTabs.forEach(tab => {
+            if (tab === activeTab) {
+                tab.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
+                tab.classList.remove('text-gray-500');
+            } else {
+                tab.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
+                tab.classList.add('text-gray-500');
+            }
+        });
+        tabContentWrapper.style.transform = `translateX(${translateX})`;
+    }
 
-    tabGoogleFonts.addEventListener('click', () => {
-        tabGoogleFonts.classList.add('text-primary-600', 'border-b-2', 'border-primary-500');
-        tabGoogleFonts.classList.remove('text-gray-500');
-        tabLineSeed.classList.remove('text-primary-600', 'border-b-2', 'border-primary-500');
-        tabLineSeed.classList.add('text-gray-500');
-        tabContentWrapper.style.transform = 'translateX(-50%)';
-    });
+    tabLineSeed.addEventListener('click', () => setActiveTab(tabLineSeed, '0'));
+    tabGoogleFonts.addEventListener('click', () => setActiveTab(tabGoogleFonts, '-33.33%'));
+    tabImageCredit.addEventListener('click', () => setActiveTab(tabImageCredit, '-66.66%'));
 
     // OFL License loading
     const oflLicenseDetails = document.getElementById('oflLicenseDetails');
