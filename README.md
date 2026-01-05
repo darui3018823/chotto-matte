@@ -1,5 +1,22 @@
 # Chotto Matte! Generator
 
+<table>
+<tr>
+<td width="50%">
+
+![Example 1](./assets/example.png)
+<p align="center"><em>Text overlay example</em></p>
+
+</td>
+<td width="50%">
+
+![Example 2](./assets/example2.png)
+<p align="center"><em>Customization example</em></p>
+
+</td>
+</tr>
+</table>
+
 A single-page tool for placing vertical Japanese text on top of an image. The app ships with adjustable typography, layout controls, theme switching, and a shareable settings code so others can reproduce the same layout.
 
 ## Features
@@ -63,6 +80,6 @@ y: vertical position (%)
 - Additional license references are shown inside the UI via the Font Licenses panel.
 
 ## Project Licensing
-- Source code explicitly authored by me is licensed under BSD-2-Clause (see [./License](./License)).
-- Fonts, images, and other third-party assets that require separate terms are listed in [./License.md](./License.md).
-- Bundled images are used with explicit permission; redistribution of those images is prohibited.
+- Project source code (HTML/CSS/JavaScript/Go) is licensed under BSD-2-Clause (see [LICENSE](./LICENSE)).
+- Third-party assets (fonts, emojis) and their licenses are documented in [Notice.md](./Notice.md).
+- Bundled images are used with explicit permission; redistribution is prohibited. See [License.md](./License.md) for details.

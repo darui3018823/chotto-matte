@@ -1,5 +1,22 @@
 # Chotto Matte! Generator
 
+<table>
+<tr>
+<td width="50%">
+
+![Example 1](./assets/example.png)
+<p align="center"><em>テキストオーバーレイの例</em></p>
+
+</td>
+<td width="50%">
+
+![Example 2](./assets/example2.png)
+<p align="center"><em>カスタマイズ例</em></p>
+
+</td>
+</tr>
+</table>
+
 画像の上に縦書きテキストを載せるワンページアプリです。フォント・文字組み・位置・テーマを細かく調整でき、設定コードを共有して同じレイアウトを再現できます。
 
 ## 主な機能
@@ -62,6 +79,6 @@ y: 垂直位置(%)
 - 追加のクレジットや全文はアプリ内の Font Licenses パネルに表示されます。
 
 ## ライセンスについて
-- 「私が作成した」と明記しているソースコードは BSD-2-Clause（配布物同梱の [./License](./License) を参照）で提供します。
-- フォント・画像など、個別ライセンスが必要な要素は [./License.md](./License.md) にまとめています。
-- 画像は本人の許可を得て使用しており、再頒布を固く禁じます。
+- 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](./LICENSE) を参照）。
+- サードパーティ素材（フォント、絵文字など）とそのライセンスは [Notice.md](./Notice.md) に記載しています。
+- 画像は本人の許可を得て使用しており、再頒布を固く禁じます。詳細は [License.md](./License.md) をご覧ください。
