@@ -354,8 +354,152 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    downloadBtn.addEventListener('click', () => {
-        alert('Right-click the image and select "Save Image As" to download.\\n\\nFor proper download with text overlay, html2canvas integration is needed.');
+    downloadBtn.addEventListener('click', async () => {
+        const originalBtnText = downloadBtn.innerHTML;
+
+        try {
+            // Show loading state
+            downloadBtn.disabled = true;
+            downloadBtn.innerHTML = `
+                <svg class="w-4 h-4 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span>Processing...</span>
+            `;
+
+            // Get the original image dimensions
+            const img = previewImage;
+            const naturalWidth = img.naturalWidth;
+            const naturalHeight = img.naturalHeight;
+
+            // Create canvas at original image resolution
+            const canvas = document.createElement('canvas');
+            canvas.width = naturalWidth;
+            canvas.height = naturalHeight;
+            const ctx = canvas.getContext('2d');
+
+            // Draw the base image
+            ctx.drawImage(img, 0, 0, naturalWidth, naturalHeight);
+
+            // Get text overlay and image rects for position calculation
+            const overlayStyles = getComputedStyle(textOverlay);
+            const imgRect = img.getBoundingClientRect();
+            const overlayRect = textOverlay.getBoundingClientRect();
+
+            // Calculate scale factor between displayed and natural size
+            const scaleX = naturalWidth / imgRect.width;
+            const scaleY = naturalHeight / imgRect.height;
+
+            // Get the center position of the text overlay relative to the image
+            const overlayCenterX = overlayRect.left + overlayRect.width / 2 - imgRect.left;
+            const overlayCenterY = overlayRect.top + overlayRect.height / 2 - imgRect.top;
+
+            // Scale to natural image coordinates
+            const textX = overlayCenterX * scaleX;
+            const textY = overlayCenterY * scaleY;
+
+            // Get text properties
+            const text = textOverlay.textContent;
+            if (!text) {
+                throw new Error('No text to render');
+            }
+
+            const fontSize = parseFloat(fontSizeSlider.value) * scaleX;
+            const letterSpacing = parseFloat(letterSpacingSlider.value) * scaleX;
+            const lineHeightVal = parseFloat(lineHeightSlider.value) / 100;
+            const rotation = parseFloat(rotationInput.value) * (Math.PI / 180);
+            const textColor = textColorInput.value;
+            const fontWeight = overlayStyles.fontWeight || '700';
+
+            // Get font family
+            let fontFamily = overlayStyles.fontFamily;
+            if (!fontFamily || fontFamily === 'sans-serif') {
+                fontFamily = '"Hiragino Kaku Gothic ProN", "Hiragino Sans", sans-serif';
+            }
+
+            // Setup canvas text properties
+            ctx.save();
+            ctx.translate(textX, textY);
+            ctx.rotate(rotation);
+            ctx.fillStyle = textColor;
+            ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+            ctx.textBaseline = 'middle';
+            ctx.textAlign = 'center';
+
+            // Vertical writing mode - draw character by character
+            const charHeight = fontSize * lineHeightVal;
+
+            // Split by newlines for multi-column handling (vertical-rl: right to left)
+            const lines = text.split('\n');
+            const columnWidth = fontSize + letterSpacing;
+
+            // Start from the rightmost column (first line goes to the right)
+            let currentColumnOffset = (lines.length - 1) * columnWidth / 2;
+
+            lines.forEach((line) => {
+                const lineChars = [...line];
+                const totalHeight = lineChars.length * charHeight;
+                let startY = -totalHeight / 2 + charHeight / 2;
+
+                lineChars.forEach((char, charIndex) => {
+                    const y = startY + charIndex * charHeight;
+                    ctx.fillText(char, currentColumnOffset, y);
+                });
+
+                // Move left for next column (vertical-rl)
+                currentColumnOffset -= columnWidth;
+            });
+
+            ctx.restore();
+
+            // Convert canvas to blob and download
+            canvas.toBlob((blob) => {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `chotto-matte-${Date.now()}.png`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+
+                // Show success state
+                downloadBtn.innerHTML = `
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Downloaded!</span>
+                `;
+                downloadBtn.classList.remove('from-primary-500', 'to-blue-500');
+                downloadBtn.classList.add('from-green-500', 'to-emerald-500');
+
+                setTimeout(() => {
+                    downloadBtn.innerHTML = originalBtnText;
+                    downloadBtn.classList.remove('from-green-500', 'to-emerald-500');
+                    downloadBtn.classList.add('from-primary-500', 'to-blue-500');
+                    downloadBtn.disabled = false;
+                }, 2000);
+            }, 'image/png', 1.0);
+
+        } catch (error) {
+            console.error('Failed to generate image:', error);
+            downloadBtn.innerHTML = `
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+                <span>Error!</span>
+            `;
+            downloadBtn.classList.remove('from-primary-500', 'to-blue-500');
+            downloadBtn.classList.add('from-red-500', 'to-rose-500');
+
+            setTimeout(() => {
+                downloadBtn.innerHTML = originalBtnText;
+                downloadBtn.classList.remove('from-red-500', 'to-rose-500');
+                downloadBtn.classList.add('from-primary-500', 'to-blue-500');
+                downloadBtn.disabled = false;
+            }, 2000);
+        }
     });
 
     function generateSettingsCode() {
@@ -420,16 +564,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Size
-            if (settings.sz) updateFontSize(settings.sz);
+            if (settings.sz !== undefined) updateFontSize(settings.sz);
 
-            // Letter Spacing
-            if (settings.ls) updateLetterSpacing(settings.ls);
+            // Letter Spacing (allow zero)
+            if (settings.ls !== undefined) updateLetterSpacing(settings.ls);
 
-            // Line Height
-            if (settings.lh) updateLineHeight(settings.lh);
+            // Line Height (allow zero)
+            if (settings.lh !== undefined) updateLineHeight(settings.lh);
 
-            // Text Width
-            if (settings.tw) updateTextWidth(settings.tw);
+            // Text Width (allow zero)
+            if (settings.tw !== undefined) updateTextWidth(settings.tw);
 
             // Auto Line Break - update shared state variable and call existing function
             if (settings.lb !== undefined) {
@@ -451,8 +595,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Position
-            if (settings.x) updatePosX(settings.x);
-            if (settings.y) updatePosY(settings.y);
+            if (settings.x !== undefined) updatePosX(settings.x);
+            if (settings.y !== undefined) updatePosY(settings.y);
 
             // Always update transform after position and rotation are set
             updateTransform();
