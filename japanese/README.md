@@ -1,6 +1,6 @@
 # Chotto Matte! Generator
 
-> [English version / 英語版はこちら](./README.md)
+> [English version / 英語版はこちら](../README.md)
 
 <table>
 <tr>
@@ -97,4 +97,4 @@ y: 垂直位置(%)
 ## ライセンスについて
 - 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](./LICENSE) を参照）。
 - サードパーティ素材（フォント、絵文字など）とそのライセンスは [Notice.md](./Notice.md) に記載しています。
-- 画像は本人の許可を得て使用しており、再頒布を固く禁じます。詳細は [License.md](./License.md) をご覧ください。
+- 画像は本人の許可を得て使用しており、再頒布を固く禁じます。詳細は [License.md](../License.md) をご覧ください。

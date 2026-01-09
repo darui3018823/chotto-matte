@@ -1,6 +1,6 @@
 # Chotto Matte! Generator
 
-> [日本語版はこちら / Japanese version](./Readme_ja.md)
+> [日本語版はこちら / Japanese version](./japanese/README.md)
 
 <table>
 <tr>

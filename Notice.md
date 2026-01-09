@@ -1,33 +1,35 @@
-# Notice — 個別ライセンスについて
+# Notice — Third-Party Licenses
 
-本プロジェクトでは、以下のサードパーティ素材を使用しています。それぞれ固有のライセンス条項に従います。
+> [日本語版はこちら / Japanese version](./japanese/Notice.md)
+
+This project uses the following third-party assets, each subject to their respective license terms.
 
 ## Google Fonts
-本プロジェクトでは以下のフォントファミリーを Google Fonts から読み込んでいます：
+The following font families are loaded from Google Fonts:
 - **M PLUS 1p** — SIL Open Font License 1.1
 - **Noto Sans JP** — SIL Open Font License 1.1
 - **Nunito Sans** — SIL Open Font License 1.1
 - **Poppins** — SIL Open Font License 1.1
 - **Red Hat Display** — SIL Open Font License 1.1
 
-ライセンス全文: [fonts/ofl_license.txt](./fonts/ofl_license.txt)
+Full license text: [fonts/ofl_license.txt](./fonts/ofl_license.txt)
 
 ## LINE Seed JP
-**LINE Seed JP** はローカルに同梱されており、SIL Open Font License 1.1 でライセンスされています。
+**LINE Seed JP** is bundled locally and licensed under the SIL Open Font License 1.1.
 
-ライセンス全文: [fonts/OFL.txt](./fonts/OFL.txt)
+Full license text: [fonts/OFL.txt](./fonts/OFL.txt)
 
 ## Microsoft Fluent UI Emoji
-本プロジェクトでは、Microsoft が提供する **microsoft/fluentui-emoji** を使用しています。
-- リポジトリ: [https://github.com/microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji)
-- ライセンス: MIT License
-- 著作権: Copyright (c) Microsoft Corporation
+This project uses **microsoft/fluentui-emoji** provided by Microsoft.
+- Repository: [https://github.com/microsoft/fluentui-emoji](https://github.com/microsoft/fluentui-emoji)
+- License: MIT License
+- Copyright: Copyright (c) Microsoft Corporation
 
-MIT License に基づき、本プロジェクト内で使用・再配布を行っています。
+Used and redistributed in accordance with the MIT License.
 
-## 画像素材
-本プロジェクトに同梱されている画像の権利情報および利用条件については、[License.md](./License.md) をご覧ください。
+## Image Assets
+For information about the rights and usage conditions of the bundled images, please see [License.md](./License.md).
 
 ---
 
-**更新日**: 2026年1月5日
+**Last Updated**: January 9, 2026
