@@ -135,4 +135,7 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
 
-chotto-matte.exe
+# Build outputs
+*.exe
+chotto-matte
+server
