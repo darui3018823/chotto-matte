@@ -6,13 +6,13 @@
 <tr>
 <td width="50%">
 
-![Example 1](./assets/example.png)
+![Example 1](../assets/example.png)
 <p align="center"><em>ページのイメージ</em></p>
 
 </td>
 <td width="50%">
 
-![Example 2](./assets/example2.png)
+![Example 2](../assets/example2.png)
 <p align="center"><em>カスタマイズ例</em></p>
 
 </td>
