@@ -37,7 +37,7 @@ A single-page tool for placing vertical Japanese text on top of an image. The ap
 - Static Go server in [server.go](./server.go) to serve HTML, JS, CSS, assets, and fonts
 
 ## Getting Started
-1) Install Go (1.21+ recommended).
+1) Install Go (1.25+ recommended).
 2) From the project root, run `go run server.go`.
 3) Open http://localhost:8080 in a browser.
 
