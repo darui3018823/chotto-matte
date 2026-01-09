@@ -36,6 +36,9 @@ A single-page tool for placing vertical Japanese text on top of an image. The ap
 - Styling helpers and font faces in [css/styles.css](./css/styles.css)
 - Static Go server in [server.go](./server.go) to serve HTML, JS, CSS, assets, and fonts
 
+## Hosted URL
+The latest built version is available at https://tool.daruks.com. You can try it directly in your browser—no local server needed. If you plan to customize or develop, follow the local steps below.
+
 ## Getting Started
 1) Install Go (1.25+ recommended).
 2) From the project root, run `go run server.go`.
