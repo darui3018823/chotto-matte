@@ -1,11 +1,13 @@
 # Chotto Matte! Generator
 
+> [English version / 英語版はこちら](./README.md)
+
 <table>
 <tr>
 <td width="50%">
 
 ![Example 1](./assets/example.png)
-<p align="center"><em>テキストオーバーレイの例</em></p>
+<p align="center"><em>ページのイメージ</em></p>
 
 </td>
 <td width="50%">
@@ -68,8 +70,22 @@ x: 水平位置(%)
 y: 垂直位置(%)
 ```
 
+## 設定コード共有時の互換性について
+
+設定コードを使ってレイアウトを共有する場合、以下の環境を基準に作成されています。
+
+- **画面解像度**: 1920×1080
+- **ブラウザヘッダー**: 約90px（ブックマークバー非表示）
+- **タスクバー**: Windows 11 標準の47px
+
+**動作確認済みブラウザ**（いずれもブックマークバー非表示）:
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge (Chromium)
+
+> 💡 タスクバーの高さについては多少の余裕を持たせて設計しているため、50px程度までであれば問題なく表示されます。一般的な Windows の設定であれば、特別な調整なしにほぼ同じレイアウトで共有できます。
+
 ## 補足と既知の制限
-- Download ボタンは現在ブラウザの「画像を保存」で対応。html2canvas による書き出しは未組み込みです。
 - Tailwind は CDN と小さな設定のみでビルド工程は不要です。
 - LINE Seed JP はローカル同梱、その他のフォントは Google Fonts CDN から取得します。
 

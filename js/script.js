@@ -385,25 +385,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // Get text overlay and image rects for position calculation
             const overlayStyles = getComputedStyle(textOverlay);
             const imgRect = img.getBoundingClientRect();
-            const overlayRect = textOverlay.getBoundingClientRect();
 
             // Calculate scale factor between displayed and natural size
             const scaleX = naturalWidth / imgRect.width;
             const scaleY = naturalHeight / imgRect.height;
-
-            // Get the center position of the text overlay relative to the image
-            const overlayCenterX = overlayRect.left + overlayRect.width / 2 - imgRect.left;
-            const overlayCenterY = overlayRect.top + overlayRect.height / 2 - imgRect.top;
-
-            // Scale to natural image coordinates
-            const textX = overlayCenterX * scaleX;
-            const textY = overlayCenterY * scaleY;
 
             // Get text properties
             const text = textOverlay.textContent;
             if (!text) {
                 throw new Error('No text to render');
             }
+
+            // Get position from CSS (percentage values)
+            const posXPercent = parseFloat(textOverlay.style.left) || parseFloat(posXSlider.value) || 20;
+            const posYPercent = parseFloat(textOverlay.style.top) || parseFloat(posYSlider.value) || 50;
+
+            // Convert percentage to actual canvas coordinates
+            const textX = (posXPercent / 100) * naturalWidth;
+            const textY = (posYPercent / 100) * naturalHeight;
 
             const fontSize = parseFloat(fontSizeSlider.value) * scaleX;
             const letterSpacing = parseFloat(letterSpacingSlider.value) * scaleX;
@@ -427,20 +426,87 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.textBaseline = 'middle';
             ctx.textAlign = 'center';
 
+            // Debug logging
+            console.log('Canvas render debug:', {
+                textX, textY,
+                fontSize,
+                letterSpacing,
+                lineHeightVal,
+                columnWidth: fontSize * lineHeightVal,
+                charHeight: fontSize + letterSpacing,
+                text,
+                fontFamily,
+                fontWeight,
+                textColor
+            });
+
             // Vertical writing mode - draw character by character
-            const charHeight = fontSize * lineHeightVal;
+            // In CSS vertical-rl with text-orientation: upright:
+            // - letterSpacing affects vertical spacing between characters
+            // - lineHeight affects column width (horizontal spacing between lines/columns)
+            const charHeight = fontSize + letterSpacing;
+            const columnWidth = fontSize * lineHeightVal;
 
-            // Split by newlines for multi-column handling (vertical-rl: right to left)
-            const lines = text.split('\n');
-            const columnWidth = fontSize + letterSpacing;
+            // Get text width percentage for calculating available space
+            const textWidthPercent = parseFloat(textOverlay.style.width) || parseFloat(textWidthSlider.value) || 30;
+            const overlayWidthScaled = (textWidthPercent / 100) * naturalWidth;
 
-            // Start from the rightmost column (first line goes to the right)
-            let currentColumnOffset = (lines.length - 1) * columnWidth / 2;
+            // Calculate how many characters fit vertically
+            // Use a reasonable max height (80% of image height for text area)
+            const maxTextHeight = naturalHeight * 0.9;
+            const maxCharsPerColumn = Math.max(1, Math.floor(maxTextHeight / charHeight));
+            const maxColumns = Math.max(1, Math.floor(overlayWidthScaled / columnWidth));
 
-            lines.forEach((line) => {
+            // Build columns based on auto line break and newline characters
+            const columns = [];
+            let currentColumn = '';
+            let currentCount = 0;
+            const pushColumn = () => {
+                if (currentColumn.length > 0) {
+                    columns.push(currentColumn);
+                }
+                currentColumn = '';
+                currentCount = 0;
+            };
+
+            for (const ch of text.replace(/\r\n?/g, '\n')) {
+                if (ch === '\n') {
+                    pushColumn();
+                    continue;
+                }
+
+                currentColumn += ch;
+                currentCount += 1;
+
+                if (autoLineBreakEnabled && currentCount >= maxCharsPerColumn) {
+                    pushColumn();
+                }
+            }
+            if (currentColumn.length > 0) {
+                pushColumn();
+            }
+
+            // Trim to available columns if text exceeds overlay width
+            const limitedColumns = columns.slice(0, maxColumns);
+
+            // Calculate total width of all columns
+            const totalColumnsWidth = limitedColumns.length * columnWidth;
+
+            // Find the maximum column length for alignment
+            const maxColumnLength = Math.max(...limitedColumns.map(col => [...col].length));
+            const maxTotalHeight = maxColumnLength * charHeight;
+
+            // Start from the rightmost position (vertical-rl: first column is on the right)
+            // Center the entire text block at the position
+            let currentColumnOffset = (totalColumnsWidth / 2) - (columnWidth / 2);
+
+            // Calculate common startY based on max column height (top-aligned within centered block)
+            const commonStartY = -maxTotalHeight / 2 + charHeight / 2;
+
+            limitedColumns.forEach((line) => {
                 const lineChars = [...line];
-                const totalHeight = lineChars.length * charHeight;
-                let startY = -totalHeight / 2 + charHeight / 2;
+                // All columns start from the same top position (top-aligned)
+                let startY = commonStartY;
 
                 lineChars.forEach((char, charIndex) => {
                     const y = startY + charIndex * charHeight;

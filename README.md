@@ -1,11 +1,13 @@
 # Chotto Matte! Generator
 
+> [日本語版はこちら / Japanese version](./Readme_ja.md)
+
 <table>
 <tr>
 <td width="50%">
 
 ![Example 1](./assets/example.png)
-<p align="center"><em>Text overlay example</em></p>
+<p align="center"><em>Page image</em></p>
 
 </td>
 <td width="50%">
@@ -69,8 +71,22 @@ x: horizontal position (%)
 y: vertical position (%)
 ```
 
+## Settings Code Compatibility
+
+When sharing layout settings via the settings code, the following environment is used as the baseline:
+
+- **Screen resolution**: 1920×1080
+- **Browser header**: Approximately 90px (bookmark bar hidden)
+- **Taskbar**: Windows 11 default of 47px
+
+**Tested browsers** (all with bookmark bar hidden):
+- Google Chrome
+- Mozilla Firefox
+- Microsoft Edge (Chromium)
+
+> 💡 The layout has some tolerance built in for taskbar height variations—up to around 50px should display without issues. If you're using typical Windows settings, layouts should transfer smoothly without any special adjustments.
+
 ## Notes and Limitations
-- Download button currently shows a hint to save via the browser; rasterized export with html2canvas is not yet wired.
 - The app relies on Tailwind CDN plus a small inline config; no build step is required.
 - LINE Seed JP is bundled locally; other families load from Google Fonts CDN when chosen.
 
