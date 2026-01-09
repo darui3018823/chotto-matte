@@ -31,10 +31,10 @@
 - LINE Seed JP と Google Fonts のライセンスビューア
 
 ## 技術スタック
-- HTML + Tailwind CDN（テーマ拡張は [js/twcss_conf.js](./js/twcss_conf.js)）
-- UI ロジックはバニラ JS の [js/script.js](./js/script.js)
-- フォント定義と補助スタイルは [css/styles.css](./css/styles.css)
-- 静的ファイルを配信する Go サーバーは [server.go](./server.go)
+- HTML + Tailwind CDN（テーマ拡張は [js/twcss_conf.js](../js/twcss_conf.js)）
+- UI ロジックはバニラ JS の [js/script.js](../js/script.js)
+- フォント定義と補助スタイルは [css/styles.css](../css/styles.css)
+- 静的ファイルを配信する Go サーバーは [server.go](../server.go)
 
 ## 動かし方
 1) Go をインストール（1.21+ 推奨）。
@@ -90,11 +90,11 @@ y: 垂直位置(%)
 - LINE Seed JP はローカル同梱、その他のフォントは Google Fonts CDN から取得します。
 
 ## フォントとライセンス
-- LINE Seed JP は [fonts](./fonts) 配下（ライセンスは [fonts/OFL.txt](./fonts/OFL.txt)）。
-- M PLUS 1p / Noto Sans JP / Nunito Sans / Poppins / Red Hat Display は Google Fonts 由来で、SIL Open Font License 1.1 です（[fonts/ofl_license.txt](./fonts/ofl_license.txt) を参照）。
+- LINE Seed JP は [fonts](./fonts) 配下（ライセンスは [fonts/OFL.txt](../fonts/OFL.txt)）。
+- M PLUS 1p / Noto Sans JP / Nunito Sans / Poppins / Red Hat Display は Google Fonts 由来で、SIL Open Font License 1.1 です（[fonts/ofl_license.txt](../fonts/ofl_license.txt) を参照）。
 - 追加のクレジットや全文はアプリ内の Font Licenses パネルに表示されます。
 
 ## ライセンスについて
-- 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](./LICENSE) を参照）。
+- 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](../LICENSE) を参照）。
 - サードパーティ素材（フォント、絵文字など）とそのライセンスは [Notice.md](./Notice.md) に記載しています。
 - 画像は本人の許可を得て使用しており、再頒布を固く禁じます。詳細は [License.md](../License.md) をご覧ください。
