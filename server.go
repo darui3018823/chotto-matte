@@ -15,14 +15,8 @@ func main() {
 		http.Redirect(w, r, "/js/script.js", http.StatusMovedPermanently)
 	})
 
-	mux.HandleFunc("/js/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "application/javascript; charset=utf-8")
-		http.ServeFile(w, r, "."+r.URL.Path)
-	})
-	mux.HandleFunc("/css/", func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/css; charset=utf-8")
-		http.ServeFile(w, r, "."+r.URL.Path)
-	})
+	mux.Handle("/js/", http.StripPrefix("/js/", http.FileServer(http.Dir("js"))))
+	mux.Handle("/css/", http.StripPrefix("/css/", http.FileServer(http.Dir("css"))))
 	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	mux.Handle("/fonts/", http.StripPrefix("/fonts/", http.FileServer(http.Dir("fonts"))))
 
