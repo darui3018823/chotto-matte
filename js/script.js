@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Load LINE Seed license from file if not already loaded
         if (!lineSeedLicenseLoaded) {
-            fetch('/fonts/OFL.txt')
+            fetch('./fonts/OFL.txt')
                 .then(response => response.text())
                 .then(text => {
                     contentLineSeed.textContent = text;
@@ -796,7 +796,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     oflLicenseDetails.addEventListener('toggle', () => {
         if (oflLicenseDetails.open && !oflLicenseLoaded) {
-            fetch('/fonts/ofl_license.txt')
+            fetch('./fonts/ofl_license.txt')
                 .then(response => response.text())
                 .then(text => {
                     oflLicenseContent.textContent = text;
