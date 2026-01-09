@@ -95,6 +95,6 @@ y: 垂直位置(%)
 - 追加のクレジットや全文はアプリ内の Font Licenses パネルに表示されます。
 
 ## ライセンスについて
-- 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](../LICENSE) を参照）。
+- 本プロジェクトのソースコード（HTML/CSS/JavaScript/Go）は BSD-2-Clause でライセンスされます（[LICENSE](../License) を参照）。
 - サードパーティ素材（フォント、絵文字など）とそのライセンスは [Notice.md](./Notice.md) に記載しています。
 - 画像は本人の許可を得て使用しており、再頒布を固く禁じます。詳細は [License.md](../License.md) をご覧ください。
