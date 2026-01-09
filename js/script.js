@@ -2,6 +2,34 @@
 // All works created by darui3018823 associated with this repository are the intellectual property of darui3018823.
 // Packages and other third-party materials used in this repository are subject to their respective licenses and copyrights.
 
+// Fetch latest commit hash from GitHub
+async function fetchCommitHash() {
+    try {
+        const response = await fetch(
+            'https://api.github.com/repos/darui3018823/chotto-matte/commits?per_page=1',
+            {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json'
+                }
+            }
+        );
+        
+        if (!response.ok) throw new Error('Failed to fetch commit');
+        
+        const data = await response.json();
+        if (data.length > 0) {
+            const shortHash = data[0].sha.substring(0, 7);
+            document.getElementById('commitHash').textContent = shortHash;
+        }
+    } catch (error) {
+        console.error('Error fetching commit hash:', error);
+        document.getElementById('commitHash').textContent = 'unknown';
+    }
+}
+
+// Fetch commit hash when page loads
+fetchCommitHash();
+
 document.addEventListener('DOMContentLoaded', () => {
     const textInput = document.getElementById('textInput');
     const fontSizeSlider = document.getElementById('fontSize');
