@@ -3,10 +3,14 @@ version: 2
 updates:
   - package-ecosystem: "gomod"
     directory: "/"
+    assignees:
+      - "darui3018823"
     schedule:
       interval: "daily"
 
   - package-ecosystem: "github-actions"
     directory: "/"
+    assignees:
+      - "darui3018823"
     schedule:
       interval: "daily"
